@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <h3>以下の内容で、送信する。</h3>
+    <%= form_for(@picture) do |f| %>
+      <%= f.hidden_field :image %>
+
+      <%=# image_tag(picture.image) %>
+      <%= f.submit "登録",class: 'btn btn-primary btn-block' %>
+    <% end %>
+    <%= form_for(@picture, url: new_picture_path, method: 'get') do |f| %>
+      <%= f.hidden_field :image %>
+      <%= f.submit "もどる", name: 'back', class: 'btn btn-default btn-block' %>
+    <% end %>
+  </div>
+</div>
