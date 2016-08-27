@@ -18,9 +18,8 @@ before_action :authenticate_user!
     @picture.user_id = current_user.id
     if @picture.save
       redirect_to pictures_path, notice: "写真を投稿しました！"
-      #NoticeMailer.sendmail_picture(@picture).deliver
+      NoticeMailer.sendmail_picture(@picture).deliver
     else
-      # 入力フォームを再描画します。
       render action: 'new'
     end
   end
