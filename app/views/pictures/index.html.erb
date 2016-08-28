@@ -11,6 +11,7 @@
 <%= link_to "写真を投稿する", new_picture_path %>
 <% @pictures.each do |picture| %>
 <%= image_tag(picture.image) %>
+<p>【ユーザID :】<%= picture.user_id %>【ユーザ名 :】<%= picture.user.name %></p>
 <%= link_to "投稿を編集する", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-success' %>
 <%= link_to "投稿を削除する", picture_path(picture.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
 <% end %>

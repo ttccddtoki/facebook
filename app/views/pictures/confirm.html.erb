@@ -4,7 +4,7 @@
     <%= form_for(@picture) do |f| %>
       <%= f.hidden_field :image %>
 
-      <%=# image_tag(picture.image) %>
+
       <%= f.submit "登録",class: 'btn btn-primary btn-block' %>
     <% end %>
     <%= form_for(@picture, url: new_picture_path, method: 'get') do |f| %>
