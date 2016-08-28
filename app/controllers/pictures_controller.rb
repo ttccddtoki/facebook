@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
-before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_picture, only:[:edit, :update, :destroy]
+
   def index
     @pictures = Picture.all.order("id").reverse_order
   end
@@ -20,7 +21,7 @@ before_action :authenticate_user!
       redirect_to pictures_path, notice: "写真を投稿しました！"
       NoticeMailer.sendmail_picture(@picture).deliver
     else
-      render action: 'new'
+      render 'new'
     end
   end
 
@@ -43,8 +44,9 @@ before_action :authenticate_user!
 
   private
    def pictures_params
-     params.require(:picture).permit(:image)
+     params.fetch(:picture, {}).permit(:image)
    end
+
    def set_picture
       @picture = Picture.find(params[:id])
   end

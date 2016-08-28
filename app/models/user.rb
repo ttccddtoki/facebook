@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
     user = User.where(provider: auth.provider, uid: auth.uid).first
 
     unless user
-      user = User.new(
+      user = User.create(
           name:     auth.info.nickname,
           provider: auth.provider,
           uid:      auth.uid,
@@ -35,7 +35,6 @@ class User < ActiveRecord::Base
           password: Devise.friendly_token[0, 20],
       )
 
-      user.save
     end
     user
   end
