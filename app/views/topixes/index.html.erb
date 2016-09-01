@@ -1,0 +1,24 @@
+<div class="text-center">
+<section class="main-header">
+  <p class="flash"><%= notice %><%= alert %></p>
+</section>
+
+
+
+<h1>投稿一覧</h1>
+<div class="row">
+<%= link_to "投稿する", new_topix_path %><br>
+
+
+<% @topixes.each do |topix| %>
+<p><%= topix.user.name %></p>
+<p><%= topix.content %></p>
+<%= image_tag(topix.image) %>
+<p class="row">
+<%= link_to "投稿を編集する", edit_topix_path(topoix.id), class: 'btn btn-default btn-sm btn-success' %>
+<%= link_to "投稿を削除する", topix_path(topix.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+</p>
+
+<% end %>
+</div>
+</div>
