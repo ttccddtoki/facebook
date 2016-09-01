@@ -1,0 +1,4 @@
+<h1><%=user.name%>のフォローしている人</h1>
+   <% user.followed_users.each do |followed_user|%>
+      <p class="center">ユーザー名<%= followed_user.name %></p>
+  <% end %>

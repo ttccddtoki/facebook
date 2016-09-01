@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<div class="child row">
+  <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <div class="topix-text">
+      <p class="left"><%= @topix.content %></p>
+      <p class="left"><%= image_tag(@topix.image) %>
+
+      <p class="right">
+        <strong>作成時間:</strong>
+        <%= @topix.created_at.strftime("%y/%m/%d %p %l:%M") %>
+      </p>
+    </div>
+    <p>コメント一覧</p>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, topix: @topix } %>
+    </div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, topix: @topix } %>
+    <% if current_user.id == @topix.user_id %>
+      <%= link_to '編集', edit_topix_path(@topix) %> |
+    <% end %>
+    <%= link_to '戻る', topixes_path %>
+  </div>
+</div>

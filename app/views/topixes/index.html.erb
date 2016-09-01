@@ -11,14 +11,17 @@
 
 
 <% @topixes.each do |topix| %>
-<p><%= topix.user.name %></p>
+<ul class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+    <li class="dropdown-menu">
+      <%= link_to "投稿を編集する", edit_topix_path(topix.id)%>
+      <%= link_to "投稿を削除する", topix_path(topix.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %>
+    </li>
+</ul>
+<p><%= profile_img(topix.user) %><%= topix.user.name %></p>
 <p><%= topix.content %></p>
 <%= image_tag(topix.image) %>
-<p class="row">
-<%= link_to "投稿を編集する", edit_topix_path(topoix.id), class: 'btn btn-default btn-sm btn-success' %>
-<%= link_to "投稿を削除する", topix_path(topix.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
-</p>
-
+<%= link_to "コメントする", topix_path(topix), class: 'btn btn-default btn-sm btn-default' %>
 <% end %>
 </div>
 </div>

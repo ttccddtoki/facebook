@@ -1,7 +1,23 @@
 Rails.application.routes.draw do
+
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
+root 'topixes#index'
+resources :users, only: [:index, :show, :edit, :update]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :topixes, only: [:index, :new, :create, :edit, :update, :destroy]
-  root 'topixes#index'
+  resources :topixes do
+  resources :comments
+
+  collection do
+    post :confirm
+  end
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -56,8 +72,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  devise_for :users, controllers: {
-    registrations: "users/registrations",
-    omniauth_callbacks: "users/omniauth_callbacks"
-  }
+  resources :conversations do
+    resources :messages
+  end
+  resources :relationships, only: [:create, :destroy]
 end

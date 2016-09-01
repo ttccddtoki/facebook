@@ -1,0 +1,5 @@
+
+  <h1><%=user.name%>のフォロワー</h1>
+   <% user.followers.each do |followers|%>
+      <p class="center">ユーザー名<%= followers.name %></p>
+  <% end %>

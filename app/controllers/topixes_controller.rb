@@ -1,6 +1,6 @@
 class TopixesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_topix, only:[:edit, :update, :destroy]
+  before_action :set_topix, only:[:show, :edit, :update, :destroy]
 
   def index
     @topixes = Topix.all.order("id").reverse_order
@@ -16,7 +16,7 @@ class TopixesController < ApplicationController
 
   def create
     @topix = Topix.new(topixes_params)
-    @topoix.user_id = current_user.id
+    @topix.user_id = current_user.id
     if @topix.save
       redirect_to topixes_path, notice: "写真を投稿しました！"
       NoticeMailer.sendmail_topix(@topix).deliver
@@ -40,6 +40,10 @@ class TopixesController < ApplicationController
     @topix.destroy
     redirect_to topixes_path, notice: "投稿を削除しました！"
   end
+  def show
+    @comment = @topix.comments.build
+    @comments = @topix.comments
+  end
 
 
   private
@@ -49,5 +53,5 @@ class TopixesController < ApplicationController
 
    def set_topix
       @topix = Topix.find(params[:id])
-  end
+   end
 end

@@ -1,7 +1,7 @@
 <%= form_for(@topix) do |f| %>
   <%= f.error_messages! %>
   <%= f.label :content %>
-  <%= f.text_field :content, class: 'form-control' %>
+  <%= f.text_field :content, placeholder: "今何してる？？", class: 'form-control' %>
   <br>
   <%= f.label :image %>
   <%= f.file_field :image, class: 'form-control' %>
