@@ -14,19 +14,8 @@
  *= require_self
  */
 
- .header {
-   margin:0;
-   padding:0;
-   width: 100%;
-   background-color:default;
-   text-align: center;
- }
- .navbar-brand:hover{
-    background-color:white;
- }
- a.navbar-header{
-   background-color:white;
- }
+
+
  img{
    max-width: 50%;
  }
@@ -35,13 +24,13 @@
    display:inline;
  }
  .header a {
-   line-height:50px;
+   line-height:60px;
    padding:18px;
-   text-decoration:none;
-   color:black;
+   text-decoration: blink;
+   color:white;
  }
  .header a:hover {
-   background: red;
+   background: #3b59bb;
  }
  .row {
  margin: 30px 30px;
@@ -49,10 +38,80 @@
  border-bottom: medium solid #aaaaaa;
  color: black;
  }
- .bg-info{
+ .bg-default{
    padding:18px;
+   margin: 30px 30px;
    border-bottom: medium solid #aaaaaa;
+   background-color: white;
  }
- .bg-success{
+ .bg-default{
    word-wrap: break-word;
  }
+
+ header {
+  width: 100%;
+  background-color:#3b5998;
+  text-align: center;
+}
+
+
+.navbar {
+    background-color: transparent;
+    color: white;
+    margin-bottom: 0px;
+}
+.navbar-default {
+  .navbar-brand {
+    color: #ccc;
+    &:hover {
+      color: white;
+    }
+  }
+  .navbar-nav > li > a {
+    color: #ccc;
+    &:hover, &:focus {
+      color: white;
+    }
+  }
+  .navbar-nav > .open > a {
+    background-color: transparent;
+    color: white;
+    &:hover, &:focus {
+      background-color: transparent;
+      color: white;
+    }
+  }
+}
+@media (max-width: 767px) {
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ccc;
+    text-align: center;
+    &:hover, &:focus {
+      color: white;
+    }
+  }
+  .navbar-default .navbar-toggle {
+    background-color: transparent;
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
+}
+
+
+.main-header img {
+  display: block;
+  margin: 0 auto;
+  width: 25%;
+}
+
+.about {
+  background-color: white;
+  color: #333;
+  /*padding-top: 20px;*/
+  /*padding-bottom: 40px;*/
+  padding: 80px;
+}
+.body{
+  background-color: black;
+}

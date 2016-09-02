@@ -7,11 +7,19 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body　style="background-color: pink;">
+<style type="text/css">
+
+body {
+background-color: #c0c2d0;
+color: #000000;
+}
+
+</style>
 
   <header>
     <nav class="navbar navbar-default">
-  <div class="container-fluid">
+
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -39,7 +47,7 @@
       </ul>
       </ul>
     </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+  <!-- /.container-fluid -->
   </header>
 
 <%=yield %>
