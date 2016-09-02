@@ -9,8 +9,9 @@
 <div class="row">
 <%= link_to "投稿する", new_topix_path %><br>
 
-
 <% @topixes.each do |topix| %>
+<% if current_user.friend.include?(topix.user) or (current_user.id == topix.user.id) %>
+<div class="bg-info">
 <ul class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
     <li class="dropdown-menu">
@@ -18,10 +19,13 @@
       <%= link_to "投稿を削除する", topix_path(topix.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %>
     </li>
 </ul>
+
 <p><%= profile_img(topix.user) %><%= topix.user.name %></p>
-<p><%= topix.content %></p>
+<p class="bg-success">><%= topix.content %></p>
 <%= image_tag(topix.image) %>
-<%= link_to "コメントする", topix_path(topix), class: 'btn btn-default btn-sm btn-default' %>
+<p><%= link_to "コメントする", topix_path(topix), class: 'btn btn-default btn-sm btn-default' %></p>
+</div>
 <% end %>
+<%end%>
 </div>
 </div>

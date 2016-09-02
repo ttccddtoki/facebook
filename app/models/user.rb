@@ -59,5 +59,7 @@ mount_uploader :avatar, AvatarUploader
   def self.create_unique_string
     SecureRandom.uuid
   end
-
+  def friend
+      followers && followed_users
+    end
 end
